@@ -111,4 +111,51 @@ public class MonitorJob {
     }
 
 
+
+
+//import React from 'react';
+//import ReactDOM from 'react-dom/client';
+//import { useWebSocket } from 'ahooks';
+//
+//
+//const MyComponent = () => {
+//    const [pair, setPair] = React.useState({})
+//
+//    const { readyState, sendMessage, latestMessage, disconnect, connect } = useWebSocket(
+//                'ws://localhost:8080/handler', {
+//                        onMessage: function(msg) {
+//            console.log(msg.data);
+//            setPair(JSON.parse(msg.data))
+//        }
+//      }
+//    );
+//
+//        function online() {
+//            connect()
+//        }
+//
+//        function offline() {
+//            disconnect()
+//        }
+//
+//
+//        return (
+//                <div>
+//            <button onClick={online}>连接</button>
+//            <button onClick={offline}>断开</button>
+//            <p>标的: {pair.symbol} </p>
+//            <p>开: {pair.open} </p>
+//            <p>高: {pair.high} </p>
+//            <p>低: {pair.low} </p>
+//            <p>收: {pair.close} </p>
+//            <p>波动率: {pair.rate} </p>
+//        </div>
+//    );
+//    };
+//
+//
+//  const root = ReactDOM.createRoot(document.getElementById('root'));
+//  root.render(<MyComponent/>)
+
+
 }
