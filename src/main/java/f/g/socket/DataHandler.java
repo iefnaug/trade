@@ -9,6 +9,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
@@ -30,6 +31,11 @@ public class DataHandler extends TextWebSocketHandler {
                 String data = QUEUE.take();
                 TextMessage textMessage = new TextMessage(data.getBytes(StandardCharsets.UTF_8));
                 session.sendMessage(textMessage);
+                if (QUEUE.size() >= 100) {
+                    for (int i = 0; i < 50; i++) {
+                        QUEUE.pollFirst();
+                    }
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
