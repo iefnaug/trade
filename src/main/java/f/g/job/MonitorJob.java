@@ -40,7 +40,7 @@ public class MonitorJob {
     }
 
 
-    @Scheduled(cron = "0 0/1 * * * ?")
+    @Scheduled(cron = "0 0/2 * * * ?")
     public void monitorPrice() throws InterruptedException {
         System.out.println("开始执行");
         long start = System.currentTimeMillis();
@@ -66,7 +66,8 @@ public class MonitorJob {
                     double close = jsonArray.getDouble(4);
                     double rate = (high - low) / open;
                     double needle = (open - low) / open;
-                    if (open < close && rate >= 0.009 && needle >= 0.003) {
+                    if (open < close && rate >= 0.0085) {
+//                    if (open < close && rate >= 0.009 && needle >= 0.003) {
                         Pair pair = Pair.builder().symbol(symbol).open(open).high(high).low(low).close(close).rate(rate).build();
                         System.out.println(JSONObject.toJSONString(pair));
                         queue.add(JSONObject.toJSONString(pair));
